@@ -4,6 +4,10 @@
 */
 :root {
   --anispeed: 10s;
+  --circle-color-light: black;
+  --circle-color-dark: white;
+  --background-color-light: white;
+  --background-color-dark: black;
 }
 
 body {
@@ -11,12 +15,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--background-color-light);
+  color: var(--circle-color-light);
 }
 
 .wrapper {
   height: 75vh;
   padding: 2rem;
-  outline: 1px solid black;
+  outline: 1px solid var(--circle-color-light);
   margin: 3rem;
 }
 
@@ -72,6 +78,31 @@ body {
   -webkit-animation: circle-2 var(--anispeed) infinite ease-in-out;
   animation: circle-2 var(--anispeed) infinite ease-in-out;
 }
+
+/* Prefers Reduced Motion - stop animations */
+@media (prefers-reduced-motion: reduce) {
+  .holder .circle {
+    animation: none; 
+  }
+}
+
+/* Prefers Color Scheme - Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--background-color-dark);
+    color: var(--circle-color-dark);
+  }
+}
+
+  .holder .circle {
+  background: var(--circle-color-dark);
+  border: 13px solid var(--circle-color-dark);
+  }
+
+  .wrapper {
+    outline: 1px solid var(--circle-color-dark);
+  }
+
 
 @-webkit-keyframes circle-2 {
   0% {
